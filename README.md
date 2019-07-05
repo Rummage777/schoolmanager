@@ -1,0 +1,2 @@
+# schoolmanager
+Django web project
