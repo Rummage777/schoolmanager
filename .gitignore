@@ -3,9 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
 #pycharm garbage
 **/.idea
 
+
+55134403230fc1356f28533f7a491e922f91570d
 # C extensions
 *.so
 
