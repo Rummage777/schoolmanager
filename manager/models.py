@@ -1,26 +1,10 @@
-from django.conf import settings
 from django.db import models
-from django.utils import timezone
 import datetime
 
 
-'''
-CREATE TABLE STUDENTS (
-    "student_id" serial NOT NULL PRIMARY KEY,
-    "student_full_name" varchar(255) NOT NULL,
-    "student_entrance_date"  NOT NULL,
-    "student_exit_date" NOT NULL,
-    "student_knowledge_level" varchar(255) NOT NULL,
-    "student_userpic_file_name" varchar(255) NOT NULL,
-    "student_status" NOT NULL,
-);
-'''
-
-
-class Students(models.Model):
-    student_id = models.AutoField(primary_key=True)
+class Student(models.Model):
     student_full_name = models.CharField(max_length=200)
-    student_entrance_date = models.DateField()
+    student_entrance_date = models.DateField(null=True)
     student_exit_date = models.DateField(blank=True, null=True)
     student_knowledge_level = [
         ('NE', 'Newbie'),
@@ -30,36 +14,27 @@ class Students(models.Model):
     ]
     student_userpic_file_name = models.CharField(max_length=200, blank=True, null=True)
 
-    def student_status(self):
+    def is_active(self):
         '''Returns the student activity status:
          ('0', 'Inactive'),
          ('1', 'Active')"
         '''
 
-        if self.student_entrance_date < today.datetime and (self.student_exit_date == Null or today.datetime < self.student_exit_date):
-            return 0
-        else:
-            return 1
+        return self.student_entrance_date < today.datetime and (self.student_exit_date == Null or today.datetime < self.student_exit_date)
 
 
-class Discipline_list(models.Model):
-    discipline_id = models.AutoField(primary_key=True)
+class Discipline(models.Model):
     discipline_name = models.CharField(max_length=200)
 
 
-class Classes_schedule(models.Model):
-    class_id = models.AutoField(primary_key=True)
-    discipline = models.ForeignKey(Discipline_list, on_delete=models.CASCADE)
-    class_date = models.DateField()
-    class_time = models.TimeField()
-    marks = models.ForeignKey(Presence_and_grades, on_delete=models.CASCADE)
+class Schedule(models.Model):
+    discipline_id = models.ForeignKey(Discipline, models.PROTECT)
+    class_dt = models.DateTimeField()
 
 
-class Presence_and_grades(models.Model):
-    marks_id = models.AutoField(primary_key=True)
-    current_class = models.ForeignKey(Classes_schedule, on_delete=models.CASCADE)
-    student = models.ForeignKey(Students, on_delete=models.CASCADE)
-    presence_mark = models.IntegerField()
+class Presence(models.Model):
+    schedule_id = models.ForeignKey(Schedule, models.PROTECT)
+    student_id = models.ForeignKey(Student, models.PROTECT)
     grade_value = [
         ('5', 'Excellent'),
         ('4', 'Good'),
