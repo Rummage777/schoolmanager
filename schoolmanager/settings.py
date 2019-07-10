@@ -25,7 +25,7 @@ SECRET_KEY = 'ueu^m@noi1nlvq26mu9xjd72*6om!$ilz*%4$qk@=7%(c_z1gl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'rummage777.pythonanywhere.com']
 
 
 # Application definition
