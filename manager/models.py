@@ -3,24 +3,22 @@ import datetime
 
 
 class Student(models.Model):
-    student_full_name = models.CharField(max_length=200)
-    student_entrance_date = models.DateField(null=True)
-    student_exit_date = models.DateField(blank=True, null=True)
-    student_knowledge_level = [
+    full_name = models.CharField(max_length=200)
+    entrance_date = models.DateField(null=True)
+    exit_date = models.DateField(blank=True, null=True)
+    knowledge_level = [
         ('NE', 'Newbie'),
         ('JR', 'Junior'),
         ('MD', 'Middle'),
         ('SR', 'Senior'),
     ]
-    student_userpic_file_name = models.CharField(max_length=200, blank=True, null=True)
+    userpic_file_name = models.CharField(max_length=200, blank=True, null=True)
 
     def is_active(self):
-        '''Returns the student activity status:
-         ('0', 'Inactive'),
-         ('1', 'Active')"
+        '''Returns the student activity status: True or False
         '''
 
-        return self.student_entrance_date < today.datetime and (self.student_exit_date == Null or today.datetime < self.student_exit_date)
+        return self.entrance_date < today.datetime and (self.exit_date == Null or today.datetime < self.exit_date)
 
 
 class Discipline(models.Model):
@@ -41,4 +39,6 @@ class Presence(models.Model):
         ('3', 'Avarage'),
         ('2', 'Bad'),
     ]
+
+
 
