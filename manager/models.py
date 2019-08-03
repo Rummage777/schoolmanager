@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 import datetime
 
 
@@ -18,6 +19,10 @@ class Student(models.Model):
 
     student_activity = models.BooleanField(default=None)
 
+    def __str__(self):
+        return self.full_name
+
+
     def update_student_activity(activity):
         '''Returns the student activity status: True or False'''
         if self.entrance_date < today.datetime and (self.exit_date == Null or today.datetime < self.exit_date):
@@ -30,15 +35,19 @@ class Student(models.Model):
 class Discipline(models.Model):
     discipline_name = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.discipline_name
+
+
 
 class Schedule(models.Model):
-    discipline_id = models.ForeignKey(Discipline, models.PROTECT)
+    discipline = models.ForeignKey(Discipline, models.PROTECT)
     class_dt = models.DateTimeField()
 
 
 class Presence(models.Model):
-    schedule_id = models.ForeignKey(Schedule, models.PROTECT)
-    student_id = models.ForeignKey(Student, models.PROTECT)
+    schedule = models.ForeignKey(Schedule, models.PROTECT)
+    student = models.ForeignKey(Student, models.PROTECT)
     grade_value_choices = [
         ('5', 'Excellent'),
         ('4', 'Good'),
@@ -46,5 +55,3 @@ class Presence(models.Model):
         ('2', 'Bad'),
     ]
     grade_value = models.CharField(max_length=10, choices=grade_value_choices, default=None)
-
-
