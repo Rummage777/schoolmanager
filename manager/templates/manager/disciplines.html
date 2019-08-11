@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>School Manager App: Disciplines list</title>
-</head>
-<body>
+{% extends "dashboard.html" %}
+{% load staticfiles%}
+{% block title %}School Manager App: Disciplines List{% endblock %}
+
+{% block content %}
     {% load django_tables2 %}
     {% render_table table %}
-</body>
-</html>
+{% endblock %}
 
