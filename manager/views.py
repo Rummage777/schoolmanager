@@ -1,3 +1,1 @@
-from django.shortcuts import render
-
-# Create your views here.
+from django.views.generic.base import TemplateViewfrom manager.models import Discipline, Studentfrom manager.tables import DisciplineTable, StudentTablefrom django_tables2 import SingleTableView# My pages views hereclass HomeTemplate(TemplateView):    template_name = 'home.html'class StudentsTemplate(SingleTableView):    template_name = 'students.html'    model = Student    table_class = StudentTableclass DisciplinesTemplate(SingleTableView):    template_name = 'disciplines.html'    model = Discipline    table_class = DisciplineTable

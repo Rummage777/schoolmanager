@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib import admin
 import datetime
 
 
@@ -23,26 +22,29 @@ class Student(models.Model):
         return self.full_name
 
 
-    def update_student_activity(activity):
+    def update_student_activity(self):
         '''Returns the student activity status: True or False'''
-        if self.entrance_date < today.datetime and (self.exit_date == Null or today.datetime < self.exit_date):
-            activity.student_activity = True
+        today = datetime.date.today()
+        if self.entrance_date < today and (self.exit_date is None or today < self.exit_date):
+            self.student_activity = True
         else:
-            activity.student_activity = False
-        activity.save()
+            self.student_activity = False
+        self.save()
 
 
 class Discipline(models.Model):
     discipline_name = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.discipline_name
-
+       return self.discipline_name
 
 
 class Schedule(models.Model):
     discipline = models.ForeignKey(Discipline, models.PROTECT)
     class_dt = models.DateTimeField()
+
+    def __str__(self):
+        return '{} ({:%d.%m.%Y %H:%M})'.format(self.discipline.discipline_name, self.class_dt)
 
 
 class Presence(models.Model):
@@ -55,3 +57,6 @@ class Presence(models.Model):
         ('2', 'Bad'),
     ]
     grade_value = models.CharField(max_length=10, choices=grade_value_choices, default=None)
+
+    def __str__(self):
+        return self.schedule.discipline.discipline_name

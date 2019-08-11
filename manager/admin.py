@@ -13,14 +13,22 @@ class StudentAdmin(admin.ModelAdmin):
 
 @admin.register(Discipline)
 class DisciplineAdmin(admin.ModelAdmin):
-    list_display = ('discipline_name',)
+#    list_display = ('discipline_name',)
+    pass
 
 @admin.register(Schedule)
 class ScheduleAdmin(admin.ModelAdmin):
     list_display = ('discipline', 'class_dt')
-    list_display_links = ('discipline',)
+    list_display_links = ('discipline', 'class_dt')
+
+#def right_name_for_schedule(obj):
+#    return obj.schedule.discipline.discipline_name
+
+#right_name_for_schedule.short_description = 'Schedule Name'
 
 @admin.register(Presence)
 class PresenceAdmin(admin.ModelAdmin):
     list_display = ('schedule', 'student', 'grade_value')
     list_filter = ('schedule', 'student', 'grade_value')
+
+
