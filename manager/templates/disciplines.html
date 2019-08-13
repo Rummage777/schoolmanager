@@ -3,6 +3,18 @@
 {% block title %}School Manager App: Disciplines List{% endblock %}
 
 {% block content %}
-
+<div>
+  <h1>School Manager App: Students List</h1>
+  <table>
+      <tbody>
+      {% for discipline in discipline_list%}
+        <tr>
+          <td> {{discipline.id}} </td>
+          <td> {{discipline.discipline_name}} </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+</div>
 {% endblock %}
 

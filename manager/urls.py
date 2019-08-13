@@ -1,12 +1,12 @@
 from django.urls import path
 from .views import HomeView
-from .views import DisciplinesView
-from .views import StudentsView
+from .views import DisciplinesListView
+from .views import StudentsListView
 
 
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
-    path('students/', StudentsView.as_view(), name='students'),
-    path('disciplines/', DisciplinesView.as_view(), name='disciplines'),
+    path('students/', StudentsListView.as_view(), name='students'),
+    path('disciplines/', DisciplinesListView.as_view(), name='disciplines'),
 ]
