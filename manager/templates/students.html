@@ -1,0 +1,20 @@
+{% block title %}School Manager App: Students List{% endblock %}
+
+{% block content %}
+
+<div>
+  <h1>School Manager App: Students List</h1>
+  <table>
+      <tbody>
+      {% for student in student_list%}
+        <tr>
+          <td> {{student.full_name}} </td>
+          <td> {{student.entrance_date}} </td>
+          <td> {{student.exit_date}} </td>
+          <td> {{student.knowledge_level}} </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+</div>
+{% endblock %}
