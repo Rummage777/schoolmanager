@@ -1,1 +1,26 @@
 
+div {
+  width: 100%;
+}
+
+form {
+  margin: 10px 15%;
+}
+
+table {
+  width: 70%;
+  margin: auto;
+  border: 1px solid slategray;
+}
+
+h1 {
+  text-align: center;
+}
+
+tr {
+  border: 1px solid slategray;
+}
+
+td {
+  padding: 5px 10px;
+}

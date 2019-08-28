@@ -1,17 +1,33 @@
+
+{% extends "base.html" %}
+{% load staticfiles%}
 {% block title %}School Manager App: Students List{% endblock %}
 
 {% block content %}
 
 <div>
   <h1>School Manager App: Students List</h1>
+  <a href="/">Back to home page</a>
+  <form action="{% url "student_search" %}" method="GET">
+    <input type="text" name="q" />
+    <button type="submit">Search</button>
+  </form>
+
   <table>
+      <thead>
+        <tr>
+            {% for student in student_list%}
+              <td></td>
+            {% endfor %}
+        </tr>
+      </thead>
       <tbody>
       {% for student in student_list%}
         <tr>
           <td> {{student.full_name}} </td>
-          <td> {{student.entrance_date}} </td>
-          <td> {{student.exit_date}} </td>
-          <td> {{student.knowledge_level}} </td>
+          <td> {{student.entrance_date|date:"d.m.Y"}} </td>
+          <td> {{student.exit_date | date:"d.m.Y" | default_if_none:""}} </td>
+          <td> {{student.get_knowledge_level_display}} </td>
         </tr>
       {% endfor %}
       </tbody>

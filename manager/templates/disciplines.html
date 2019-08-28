@@ -1,20 +1,17 @@
-{% extends "dashboard.html" %}
+{% extends "base.html" %}
 {% load staticfiles%}
 {% block title %}School Manager App: Disciplines List{% endblock %}
 
 {% block content %}
 <div>
   <h1>School Manager App: Students List</h1>
-  <table>
-      <tbody>
-      {% for discipline in discipline_list%}
-        <tr>
-          <td> {{discipline.id}} </td>
-          <td> {{discipline.discipline_name}} </td>
-        </tr>
-      {% endfor %}
-      </tbody>
-  </table>
+  <a href="/">Back to home page</a>
+  <ul>
+    {% for discipline in discipline_list%}
+      <li>{{discipline.discipline_name}}</li>
+    {% endfor %}
+  </ul>
+
 </div>
 {% endblock %}
 

@@ -1,7 +1,6 @@
 from django.db import models
 import datetime
 
-
 class Student(models.Model):
     full_name = models.CharField(max_length=200)
     entrance_date = models.DateField(null=True)
