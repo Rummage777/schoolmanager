@@ -10,17 +10,13 @@ form {
 table {
   width: 70%;
   margin: auto;
-  border: 1px solid slategray;
+  border: 1px solid lightgray;
 }
 
 h1 {
   text-align: center;
 }
 
-tr {
-  border: 1px solid slategray;
-}
-
-td {
-  padding: 5px 10px;
+.dtimes {
+  width: 30px;
 }

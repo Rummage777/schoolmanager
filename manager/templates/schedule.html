@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load staticfiles%}
+{% block title %}School Manager App: Classes Schedule{% endblock %}
+
+{% block content %}
+  <h1>School Manager App: Classes Schedule</h1>
+  <a href="/">Back to home page</a>
+    <table class="table table">
+      <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Class Discipline</th>
+          </tr>
+        </thead>
+      <tbody>
+        {%for schedule in class_schedule %}
+          <tr>
+            <td class="dtimes">{{schedule.class_dt | date:"d.m.Y"}}</td>
+            <td class="dtimes">{{schedule.class_dt | time:"H:i"}}</td>
+            <td>{{schedule.discipline}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

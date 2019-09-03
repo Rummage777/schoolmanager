@@ -7,25 +7,26 @@
 
 <div>
   <h1>School Manager App: Students List</h1>
-  <a href="/">Back to home page</a>
-  <form action="{% url "student_search" %}" method="GET">
+  <a href="/">Back to home page</a>git
+  <form action="{% url "students" %}" method="GET">
     <input type="text" name="q" />
     <button type="submit">Search</button>
   </form>
 
-  <table>
+  <table class="table table-dark">
       <thead>
         <tr>
-            {% for student in student_list%}
-              <td></td>
-            {% endfor %}
+          <th>Student Full Name</th>
+          <th>Entrance Date</th>
+          <th>Exit Date</th>
+          <th>Knowledge Level</th>
         </tr>
       </thead>
       <tbody>
       {% for student in student_list%}
         <tr>
           <td> {{student.full_name}} </td>
-          <td> {{student.entrance_date|date:"d.m.Y"}} </td>
+          <td> {{student.entrance_date | date:"d.m.Y"}} </td>
           <td> {{student.exit_date | date:"d.m.Y" | default_if_none:""}} </td>
           <td> {{student.get_knowledge_level_display}} </td>
         </tr>
