@@ -56,8 +56,8 @@ class StudentPresenceView(ListView):
     template_name = 'studentpresence.html'
 
     def student_presence(request, pk):
-        student = get_object_or_404(Student, pk=pk)
-        return render(request, {'student': student})
+        student = get_object_or_404(Presence, pk=pk)
+        return render(request, 'student/studentpresence.html', {'student': student})
 
 class ClassPresenceView(ListView):
     model = Presence
@@ -65,6 +65,6 @@ class ClassPresenceView(ListView):
     template_name = 'classpresence.html'
 
     def class_presence(request, pk):
-        class = get_object_or_404(Discipline, pk=pk)
-        return render(request, {'class': class})
+        for_class = get_object_or_404(Presence, pk=pk)
+        return render(request, 'for_class/classpresence.html', {'for_class': for_class})
 
