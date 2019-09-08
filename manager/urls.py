@@ -4,7 +4,7 @@ from .views import HomeView
 from .views import DisciplinesListView
 from .views import StudentSearchView
 from .views import ScheduleView
-from .views import StudentPresenceView
+from .views import student_presence
 from .views import ClassPresenceView
 
 
@@ -13,6 +13,6 @@ urlpatterns = [
     path('students/', StudentSearchView.as_view(), name='students'),
     path('disciplines/', DisciplinesListView.as_view(), name='disciplines'),
     path('schedule/', ScheduleView.as_view(), name='schedule'),
-    path('students/<int:pk>/', StudentPresenceView.as_view(), name='student_presence'),
+    path('students/<int:pk>/', student_presence, name='student_presence'),
     path('presence/<int:pk>/', ClassPresenceView.as_view(), name='class_presence'),
 ]

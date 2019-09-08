@@ -52,14 +52,12 @@ class ScheduleView(ListView):
         context['class_schedule'] = Schedule.objects.all().order_by('class_dt', 'discipline')
         return context
 
-class StudentPresenceView(generic.DetailView):
-    model = Presence
 
-    template_name = 'studentpresence.html'
-
-    def student_presence(request, pk):
-        student_detailes = Presence.objects.filter(student_id=pk).values('schedule__discipline__discipline_name', 'schedule__class_dt', 'grade_value')
-        return render(request, 'studentpresence.html', {'student_detailes': student_detailes})
+def student_presence(request, pk):
+    print(pk)
+    print(type(pk))
+    student_detailes = Presence.objects.filter(student_id=pk).values('schedule__discipline__discipline_name', 'schedule__class_dt', 'grade_value')
+    return render(request, 'studentpresence.html', {'student_detailes': student_detailes})
 
 
 class ClassPresenceView(ListView):
