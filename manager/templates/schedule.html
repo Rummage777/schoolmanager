@@ -11,6 +11,7 @@
             <th>Date</th>
             <th>Time</th>
             <th>Class Discipline</th>
+            <th>Student Presence</th>
           </tr>
         </thead>
       <tbody>
@@ -18,7 +19,8 @@
           <tr>
             <td class="dtimes">{{schedule.class_dt | date:"d.m.Y"}}</td>
             <td class="dtimes">{{schedule.class_dt | time:"H:i"}}</td>
-            <td>{{schedule.discipline}}</td>
+            <td class="names">{{schedule.discipline}}</td>
+            <td><a href='/presence/{{schedule.id}}'> Student presence report </td>
           </tr>
         {% endfor %}
       </tbody>

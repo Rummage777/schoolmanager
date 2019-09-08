@@ -4,7 +4,9 @@ from .models import Student
 from .models import Schedule
 from .models import Presence
 from django.views.generic import ListView
+from django.views import generic
 from django.db.models import Q
+from django.shortcuts import get_object_or_404, render
 
 # My pages views here
 
@@ -50,14 +52,15 @@ class ScheduleView(ListView):
         context['class_schedule'] = Schedule.objects.all().order_by('class_dt', 'discipline')
         return context
 
-class StudentPresenceView(ListView):
+class StudentPresenceView(generic.DetailView):
     model = Presence
 
     template_name = 'studentpresence.html'
 
     def student_presence(request, pk):
-        student = get_object_or_404(Presence, pk=pk)
-        return render(request, 'student/studentpresence.html', {'student': student})
+        student_detailes = Presence.objects.filter(student_id=pk).values('schedule__discipline__discipline_name', 'schedule__class_dt', 'grade_value')
+        return render(request, 'studentpresence.html', {'student_detailes': student_detailes})
+
 
 class ClassPresenceView(ListView):
     model = Presence
@@ -65,6 +68,11 @@ class ClassPresenceView(ListView):
     template_name = 'classpresence.html'
 
     def class_presence(request, pk):
-        for_class = get_object_or_404(Presence, pk=pk)
-        return render(request, 'for_class/classpresence.html', {'for_class': for_class})
+        class_detailes = get_object_or_404(Schedule, pk=pk)
+        return render(request, 'classpresence.html', {'class_detailes': class_detailes})
 
+
+    # def get_context_data(self, pk, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['student_list'] = Presence.objects.filter(dicsipline__id='pk').values('schedule__discipline__discipline_name', 'schedule__class_dt', 'grade_value')
+    #     return context

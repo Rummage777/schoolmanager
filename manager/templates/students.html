@@ -5,9 +5,9 @@
 
 {% block content %}
 
-<div>
+<div xmlns="http://www.w3.org/1999/html">
   <h1>School Manager App: Students List</h1>
-  <a href="/">Back to home page</a>git
+  <p><a href="/">Back to Home page</a></p>
   <form action="{% url "students" %}" method="GET">
     <input type="text" name="q" />
     <button type="submit">Search</button>
@@ -25,7 +25,7 @@
       <tbody>
       {% for student in student_list%}
         <tr>
-          <td> {{student.full_name}} </td>
+          <td> <a href='/students/{{student.id}}'> {{student.full_name}} </a> </td>
           <td> {{student.entrance_date | date:"d.m.Y"}} </td>
           <td> {{student.exit_date | date:"d.m.Y" | default_if_none:""}} </td>
           <td> {{student.get_knowledge_level_display}} </td>

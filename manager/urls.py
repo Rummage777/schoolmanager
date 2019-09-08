@@ -13,6 +13,6 @@ urlpatterns = [
     path('students/', StudentSearchView.as_view(), name='students'),
     path('disciplines/', DisciplinesListView.as_view(), name='disciplines'),
     path('schedule/', ScheduleView.as_view(), name='schedule'),
-    path('<student/<int:pk>/', StudentPresenceView.student_presence, name='student_presence'),
-    path('<class/<int:pk>/', ClassPresenceView.class_presence, name='class_presence'),
+    path('students/<int:pk>/', StudentPresenceView.as_view(), name='student_presence'),
+    path('presence/<int:pk>/', ClassPresenceView.as_view(), name='class_presence'),
 ]
