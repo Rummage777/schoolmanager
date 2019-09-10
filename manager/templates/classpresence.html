@@ -4,9 +4,35 @@
 
 {% block content %}
 <div>
-  <h1>School Manager App: Class Presence</h1>
-  <a href="../../schedule">Back to Schedule</a>
-    <p> Here Single Class </p>
-    <p> <strong>Class ID:</strong> {{object.schedule.id}}</p>
+  <h1>Class Detailes</h1>
+  <p><a href="../../schedule">Back to Schedule</a></p>
+    <p> <strong>Discipline Name:</strong> {{class_details.discipline.discipline_name}}</p>
+    <p> <strong>Class ID:</strong> {{class_details.id}}</p>
+    <p> <strong>Class Date:</strong> {{class_details.class_dt | date:"d.m.Y"}}</p>
+    <p> <strong>Class Time:</strong> {{class_details.class_dt | time:"H:i"}}</p>
+</div>
+<div>
+  <table>
+      <thead>
+          <tr>
+            <th>Student Full Name</th>
+            <th>Class Grade</th>
+          </tr>
+      </thead>
+      <tbody>
+      {% if class_presence %}
+        {%for item in class_presence %}
+          <tr>
+            <td class="dtimes">{{item.student__full_name}}</td>
+            <td class="dtimes">{{item.grade_value}}</td>
+          </tr>
+        {% endfor %}
+      {% else %}
+            <tr>
+              <td colspan="4" align="center">No students visited this class.</td>
+            </tr>
+       {% endif %}
+      </tbody>
+  </table>
 </div>
 {% endblock %}

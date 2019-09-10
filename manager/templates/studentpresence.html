@@ -4,21 +4,40 @@
 
 {% block content %}
 <div>
-  <h1>Student {{object.student}} Details </h1>
+  <h1>Student {{student_details.full_name}} Details </h1>
   <a href="../">Back to Students List</a>
-
-  <p> <strong>Student Full Name:</strong> {{object.student}}</p>
-  <p> <strong>Student ID:</strong> {{object.student.id}}</p>
-  <p> <strong>Student Entrance Date:</strong> {{object.student.entrance_date | date:"d.m.Y"}}</p>
-  <p> <strong>Student Knowledge Level:</strong> {{object.student.knowledge_level}}</p>
-
-  <ul>
-     {%for item in student_detailes %}
-       <li>1{{item.grade_value}}</li>
-<!--       <li>2{{object.presence.student_presence}}</li>-->
-<!--       <li>3{{object.schedule.class_dt}}</li>-->
-     {% endfor %}
-  </ul>
+  <p> <strong>Student Full Name:</strong> {{student_details.full_name}}</p>
+  <p> <strong>Student ID:</strong> {{student_details.id}}</p>
+  <p> <strong>Student Entrance Date:</strong> {{student_details.entrance_date | date:"d.m.Y"}}</p>
+  <p> <strong>Student Knowledge Level:</strong> {{student_details.get_knowledge_level_display}}</p>
+</div>
+<div>
+  <table>
+      <thead>
+          <tr>
+            <th>Class Date</th>
+            <th>Class Time</th>
+            <th>Discipline Name</th>
+            <th>Class Grade</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% if student_presence %}
+          {%for item in student_presence %}
+            <tr>
+              <td class="dtimes">{{item.schedule__class_dt | date:"d.m.Y"}}</td>
+              <td class="dtimes">{{item.schedule__class_dt | time:"H:i"}}</td>
+              <td class="dtimes">{{item.schedule__discipline__discipline_name}}</td>
+              <td class="dtimes">{{item.grade_value}}</td>
+            </tr>
+          {% endfor %}
+        {% else %}
+            <tr>
+              <td colspan="4" align="center">No classes visited.</td>
+            </tr>
+        {% endif %}
+      </tbody>
+  </table>
 </div>
 {% endblock %}
 

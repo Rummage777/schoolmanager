@@ -1,16 +1,22 @@
 
+
 div {
   width: 100%;
 }
 
 form {
-  margin: 10px 15%;
+  margin: 10px 0;
 }
 
 table {
-  width: 70%;
-  margin: auto;
+  width: 60%;
+  /*margin: auto;*/
+  align: left;
   border: 1px solid lightgray;
+}
+
+tr {
+    border: 1px solid lightgray;
 }
 
 h1 {
@@ -18,7 +24,7 @@ h1 {
 }
 
 .dtimes {
-  width: 30px;
+  width: 35px;
 }
 
 .names {
