@@ -5,8 +5,8 @@ from .views import DisciplinesListView
 from .views import StudentSearchView
 from .views import ScheduleView
 from .views import student_presence
-from .views import class_presence
-# from .views import ClassPresenceView
+from .views import SingleDisciplineView
+from .views import ClassPresenceView
 
 
 urlpatterns = [
@@ -15,6 +15,6 @@ urlpatterns = [
     path('disciplines/', DisciplinesListView.as_view(), name='disciplines'),
     path('schedule/', ScheduleView.as_view(), name='schedule'),
     path('students/<int:pk>/', student_presence, name='student_presence'),
-    path('presence/<int:pk>/', class_presence, name='class_presence'),
-    # path('presence/<int:pk>/', ClassPresenceView.class_presence, name='class_presence'),
+    path('disciplines/<int:pk>/', SingleDisciplineView.as_view(), name='single_discipline'),
+    path('presence/<int:pk>/', ClassPresenceView.as_view(), name='class_presence'),
 ]

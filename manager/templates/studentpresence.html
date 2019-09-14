@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load staticfiles%}
-{% block title %}School Manager App: Disciplines List{% endblock %}
+{% block title %}School Manager App: Student {{student_details.full_name}} Details{% endblock %}
 
 {% block content %}
 <div>
   <h1>Student {{student_details.full_name}} Details </h1>
+  <p></p><a href="/">Back to Home page</a></p>
   <a href="../">Back to Students List</a>
   <p> <strong>Student Full Name:</strong> {{student_details.full_name}}</p>
   <p> <strong>Student ID:</strong> {{student_details.id}}</p>
@@ -27,7 +28,7 @@
             <tr>
               <td class="dtimes">{{item.schedule__class_dt | date:"d.m.Y"}}</td>
               <td class="dtimes">{{item.schedule__class_dt | time:"H:i"}}</td>
-              <td class="dtimes">{{item.schedule__discipline__discipline_name}}</td>
+               <td class="dtimes"><a href="/presence/{{item.schedule__id}}">{{item.schedule__discipline__discipline_name}}</a></td>
               <td class="dtimes">{{item.grade_value}}</td>
             </tr>
           {% endfor %}

@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load staticfiles%}
-{% block title %}School Manager App: Student Name{% endblock %}
+{% block title %}School Manager App: Class Details{% endblock %}
 
 {% block content %}
 <div>
   <h1>Class Detailes</h1>
+  <p></p><a href="/">Back to home page</a></p>
   <p><a href="../../schedule">Back to Schedule</a></p>
     <p> <strong>Discipline Name:</strong> {{class_details.discipline.discipline_name}}</p>
     <p> <strong>Class ID:</strong> {{class_details.id}}</p>

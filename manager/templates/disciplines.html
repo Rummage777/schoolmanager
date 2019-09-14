@@ -4,11 +4,11 @@
 
 {% block content %}
 <div>
-  <h1>School Manager App: Students List</h1>
-  <p></p><a href="/">Back to home page</a></p>
+  <h1>School Manager App: Disciplines List</h1>
+  <p></p><a href="/">Back to Home page</a></p>
   <ul>
     {% for discipline in discipline_list%}
-      <li>{{discipline.discipline_name}}</li>
+      <li><a href='/disciplines/{{discipline.id}}'> {{discipline.discipline_name}}</a></li>
     {% endfor %}
   </ul>
 

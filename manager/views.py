@@ -37,6 +37,23 @@ class DisciplinesListView(TemplateView):
         context['discipline_list'] = Discipline.objects.all()
         return context
 
+class SingleDisciplineView(TemplateView):
+
+    template_name = 'singlediscipline.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = kwargs['pk']
+        context['discipline_details'] = Discipline.objects.get(id=pk)
+        context['discipline_classes'] = Schedule.objects.filter(discipline_id=pk).values(
+            'id',
+            'class_dt'
+        )
+        print(context)
+        return context
+
+
+
 class ScheduleView(ListView):
     model = Schedule
 
@@ -52,24 +69,28 @@ class ScheduleView(ListView):
 def student_presence(request, pk):
     student_details = Student.objects.get(id=pk)
     student_presence = Presence.objects.filter(student_id=pk).values(
+        'schedule__id',
         'schedule__discipline__discipline_name',
         'schedule__class_dt',
         'grade_value'
-    )
+    ).order_by('schedule__class_dt', 'schedule__discipline__discipline_name')
+
     context = {
         'student_presence': student_presence,
         'student_details': student_details
     }
     return render(request, 'studentpresence.html', context)
 
-def class_presence(request, pk):
-    class_details = Schedule.objects.get(id=pk)
-    class_presence = Presence.objects.filter(schedule_id=pk).values(
-        'student__full_name',
-        'grade_value'
-    )
-    context = {
-        'class_presence': class_presence,
-        'class_details': class_details
-    }
-    return render(request, 'classpresence.html', context)
+
+class ClassPresenceView(TemplateView):
+    template_name = 'classpresence.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = kwargs['pk']
+        context['class_details'] = Schedule.objects.get(id=pk)
+        context['class_presence'] = Presence.objects.filter(schedule_id=pk).values(
+            'student__full_name',
+            'grade_value'
+        )
+        return context

@@ -25,7 +25,7 @@
       <tbody>
       {% for student in student_list%}
         <tr>
-          <td> <a href='/students/{{student.id}}'> {{student.full_name}} </a> </td>
+          <td> <a href='/students/{{student.id}}'> {{student.full_name}}</a></td>
           <td> {{student.entrance_date | date:"d.m.Y"}} </td>
           <td> {{student.exit_date | date:"d.m.Y" | default_if_none:""}} </td>
           <td> {{student.get_knowledge_level_display}} </td>
