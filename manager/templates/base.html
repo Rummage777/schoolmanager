@@ -1,16 +1,73 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
     {% load static %}
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 <body>
 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">SchoolManager App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {% if request.path == "/" %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+        </li>
+      {% else %}
+         <li class="nav-item">
+           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+         </li>
+      {% endif %}
+      {% if request.path == "/students/" %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/students">Students list<span class="sr-only">(current)</span></a>
+        </li>
+      {% else %}
+         <li class="nav-item">
+           <a class="nav-link" href="/students">Students list<span class="sr-only">(current)</span></a>
+         </li>
+      {% endif %}
+      {% if request.path == "/disciplines/" %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/disciplines">Disciplines list<span class="sr-only">(current)</span></a>
+        </li>
+      {% else %}
+         <li class="nav-item">
+           <a class="nav-link" href="/disciplines">Disciplines list<span class="sr-only">(current)</span></a>
+         </li>
+      {% endif %}
+      {% if request.path == "/schedule/" %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/schedule">Schedule<span class="sr-only">(current)</span></a>
+        </li>
+      {% else %}
+         <li class="nav-item">
+           <a class="nav-link" href="/schedule">Schedule<span class="sr-only">(current)</span></a>
+         </li>
+      {% endif %}
+  </div>
+</nav>
+
+
+<div class="container bg-light" width=90%>
+
     {% block content %}{% endblock %}
     {% block extrahead %}{% endblock %}
+</div>
+
 
 </body>
 </html>

@@ -3,17 +3,23 @@
 {% block title %}School Manager App: Discipline details{% endblock %}
 
 {% block content %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="../">Disciplines</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{discipline_details.discipline_name}}</li>
+  </ol>
+</nav>
+
 <div>
   <h1>Discipline details</h1>
-  <p></p><a href="/">Back to Home page</a></p>
-  <p><a href="../">Back to Disciplines</a></p>
   <p><strong>Discipline Name:</strong> {{discipline_details.discipline_name}}</p>
   <p><strong>Discipline ID:</strong> {{discipline_details.id}}</p>
   <p> <strong>Number of Classes:</strong> {{discipline_classes.count}}</p>
 </div>
 <div>
-  <table>
-      <thead>
+  <table class="table table-hover">
+      <thead class="thead-light">
           <tr>
             <th>Class ID in Schedule</th>
             <th>Class Date</th>

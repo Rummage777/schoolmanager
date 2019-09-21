@@ -1,32 +1,5 @@
-
-
-div {
-  width: 100%;
-}
-
-form {
-  margin: 10px 0;
-}
-
-table {
-  width: 60%;
-  /*margin: auto;*/
-  align: left;
-  border: 1px solid lightgray;
-}
-
-tr {
-    border: 1px solid lightgray;
-}
-
-h1 {
-  text-align: center;
-}
-
-.dtimes {
-  width: 35px;
-}
-
-.names {
-  width: 70px;
+body {
+  background-color: dimgrey;
+  /*background-image: url("manager/static/img/bg_img.jpg");*/
+  /*background-image: url("../pic1.jpg");*/
 }

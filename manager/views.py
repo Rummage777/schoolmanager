@@ -9,9 +9,11 @@ from django.shortcuts import get_object_or_404, render
 
 # My pages views here
 
+
 class HomeView(TemplateView):
 
     template_name = 'home.html'
+
 
 class StudentSearchView(ListView):
     model = Student
@@ -31,10 +33,9 @@ class DisciplinesListView(TemplateView):
 
     template_name = 'disciplines.html'
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['discipline_list'] = Discipline.objects.all()
+        context['discipline_list'] = Discipline.objects.all().order_by('discipline_name')
         return context
 
 class SingleDisciplineView(TemplateView):
@@ -54,7 +55,7 @@ class SingleDisciplineView(TemplateView):
 
 
 
-class ScheduleView(ListView):
+class ScheduleView(TemplateView):
     model = Schedule
 
     # Use this template for filtering student list on the same page Student

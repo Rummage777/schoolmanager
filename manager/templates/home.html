@@ -4,14 +4,40 @@
 {% block title %}Educational App: School manager{% endblock %}
 
 {% block content %}
-<div>
-  <h1>School Manager App</h1>
-  <h3>App links:</h3>
-    <ul>
-        <li><a href="/students">Students list</a></li>
-        <li><a href="/disciplines">Disciplines list</a></li>
-        <li><a href="/schedule">Schedule</a></li>
-    </ul>
+<div class="h-75 mt-4 pt-4">
+  <h1 class="mx-auto">School Manager App</h1>
+  <div class="row mt-4 pb-5">
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/img/students.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Student List</h5>
+             <p class="card-text">You can have students list in one click and check easy each student presence and marks.</p>
+             <a href="/students" class="btn btn-primary">Go Students List</a>
+         </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/img/disciplines.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Discipline List</h5>
+             <p class="card-text">You can have disciplinces list and all classes of chosen dicsipline in schedule .</p>
+             <a href="/disciplines" class="btn btn-primary">Go Disciplines</a>
+         </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/img/schedule.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Schedule</h5>
+             <p class="card-text">You can gave full schedule and check students presence and marks in each class.</p>
+             <a href="/schedule" class="btn btn-primary">Go Schedule</a>
+         </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

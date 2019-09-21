@@ -10,10 +10,11 @@ psycopg2-binary==2.8.3
 
 To install Requirements type in command line:
 
-`pip install requirements.txt`
+`pip install requirements.txt -r`
 
 # PROJECT DESCRIPTION:
 
+The application allows you to keep track of attendance and student performance.
 This app shows:
 - list of student;
 - list of discipline;

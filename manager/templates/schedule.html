@@ -3,10 +3,10 @@
 {% block title %}School Manager App: Classes Schedule{% endblock %}
 
 {% block content %}
-  <h1>School Manager App: Classes Schedule</h1>
-  <p></p><a href="/">Back to home page</a></p>
-    <table class="table-hover">
-      <thead>
+  <h1 class="mt-4 pt-4">School Manager App: Classes Schedule</h1>
+
+  <table class="table table-hover mt-4">
+      <thead class="thead-light">
           <tr>
             <th>Date</th>
             <th>Time</th>
@@ -17,12 +17,13 @@
       <tbody>
         {%for schedule in class_schedule %}
           <tr>
-            <td><a href='/presence/{{schedule.id}}'>{{schedule.class_dt | date:"d.m.Y"}}</td>
-            <td><a href='/presence/{{schedule.id}}'>{{schedule.class_dt | time:"H:i"}}</td>
-            <td><a href='/presence/{{schedule.id}}'>{{schedule.discipline}}</td>
+            <td>{{schedule.class_dt | date:"d.m.Y"}}</td>
+            <td>{{schedule.class_dt | time:"H:i"}}</td>
+            <td>{{schedule.discipline}}</td>
             <td><a href='/presence/{{schedule.id}}'> Student presence report </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
+
 {% endblock %}
